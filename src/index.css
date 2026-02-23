@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+
+  --color-valorant-red: #ff4655;
+  --color-valorant-dark: #0f1923;
+  --color-valorant-gray: #ece8e1;
+  --color-valorant-blue: #00b5d8;
+  
+  /* Windows 11 / Modern Design Tokens */
+  --color-win-bg: #0a0a0a;
+  --color-win-surface: rgba(20, 20, 20, 0.6);
+  --color-win-border: rgba(255, 255, 255, 0.06);
+  --color-win-accent: #ff4655;
+  
+  --shadow-glow: 0 0 20px rgba(255, 70, 85, 0.15);
+  --shadow-acrylic: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  body {
+    @apply bg-[#050505] text-white font-sans antialiased overflow-hidden selection:bg-valorant-red selection:text-white;
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(255, 70, 85, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(0, 181, 216, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 1) 0%, rgba(5, 5, 5, 1) 100%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+/* Satisfying Mica / Acrylic Effect */
+.mica-effect {
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid var(--color-win-border);
+  box-shadow: var(--shadow-acrylic);
+}
+
+.acrylic-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.acrylic-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 70, 85, 0.05);
+}
+
+.acrylic-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Modern Button Design */
+.win-button {
+  @apply relative overflow-hidden transition-all duration-300 rounded-xl px-5 py-2.5 flex items-center gap-2.5 font-medium text-sm;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.win-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.win-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.win-button-primary {
+  @apply bg-valorant-red text-white border-none font-bold uppercase tracking-widest text-xs shadow-lg;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.win-button-primary:hover {
+  @apply bg-[#ff5e6a];
+  box-shadow: 0 8px 24px rgba(255, 70, 85, 0.4), 0 0 40px rgba(255, 70, 85, 0.2);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.win-button-primary:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Custom Scrollbar - Modern & Minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Interactive Glows */
+.glow-on-hover:hover {
+  box-shadow: 0 0 30px rgba(255, 70, 85, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 15px rgba(255, 70, 85, 0.5);
+}
+
+/* Sidebar Active State */
+.nav-item-active {
+  background: rgba(255, 70, 85, 0.08);
+  color: white;
+}
+
+.nav-item-active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 3px;
+  background: var(--color-valorant-red);
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0 0 10px var(--color-valorant-red);
+}
+
+/* Glass Input */
+.glass-input {
+  @apply bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-sm transition-all duration-300;
+}
+
+.glass-input:focus {
+  @apply bg-white/10 border-valorant-red/50 outline-none ring-2 ring-valorant-red/10;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  100% { left: 200%; }
+}
